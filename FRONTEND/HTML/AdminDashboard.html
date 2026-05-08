@@ -238,9 +238,14 @@
       <div class="form-group"><label class="form-label">Category</label><select id="campaignCategoryInput" class="form-input"><option>Education</option><option>Health</option><option>Natural Disasters</option><option>Community</option></select></div>
       <div class="form-group"><label class="form-label">Goal Amount (₱)</label><input id="campaignGoalInput" class="form-input" type="number" placeholder="50000"/></div>
       <div class="form-group form-full"><label class="form-label">Description</label><textarea id="campaignDescriptionInput" class="form-input" placeholder="Describe your campaign…"></textarea></div>
+      <div class="form-group"><label class="form-label">Bank Name</label><input id="campaignBankNameInput" class="form-input" type="text" placeholder="BPI / BDO / LandBank"/></div>
+      <div class="form-group"><label class="form-label">Bank Account Number</label><input id="campaignBankAccountInput" class="form-input" type="text" placeholder="1234 5678 9012"/></div>
+      <div class="form-group form-full"><label class="form-label">Bank Account Name</label><input id="campaignBankPayeeInput" class="form-input" type="text" placeholder="Account holder name"/></div>
+      <div class="form-group"><label class="form-label">GCash Number</label><input id="campaignGCashInput" class="form-input" type="text" placeholder="09XX XXX XXXX"/></div>
+      <div class="form-group"><label class="form-label">PayMaya Number</label><input id="campaignPayMayaInput" class="form-input" type="text" placeholder="09XX XXX XXXX"/></div>
       <div class="form-group form-full"><label class="form-label">Media Upload</label><input class="form-input" type="file" accept="image/*,video/*"/></div>
     </div>
-    <p style="font-size:12px;color:var(--text-soft);margin-top:12px">Pick a template to prefill campaign details. This page is placeholder-only until backend campaign data is connected.</p>
+    <p style="font-size:12px;color:var(--text-soft);margin-top:12px">Provide at least one receiving method (bank or e-wallet) so donors can see where to send money on the Donate flow.</p>
   </div>
   <div class="modal-footer"><button class="btn btn-ghost btn-sm" onclick="closeModal('createCampaignModal')">Cancel</button><button class="btn btn-primary btn-sm" onclick="saveCampaign()">Save as Draft</button><button class="btn btn-success btn-sm" onclick="submitCampaign()">Submit for Approval</button></div>
 </div>
