@@ -11,15 +11,8 @@ const ACCOUNTS = {
 
 let attempts = 0;
 const MAX_ATTEMPTS = 5;
-let captchaChecked = false;
 let currentUser = null;
 let lockTimer = null;
-
-// ── CAPTCHA ──
-function toggleCaptcha(){
-  captchaChecked = !captchaChecked;
-  document.getElementById('captchaCheck').classList.toggle('checked', captchaChecked);
-}
 
 // ── PASSWORD TOGGLE ──
 function togglePwd(inputId, iconId) {
@@ -51,7 +44,6 @@ function attemptLogin() {
   clearMsg('msgArea');
 
   if (!id || !pwd) { showMsg('msgArea','error','Please enter your email/ID and password.'); return; }
-  if (!captchaChecked) { showMsg('msgArea','warn','Please complete the CAPTCHA verification.'); return; }
 
   setLoading(true);
   setTimeout(() => {
