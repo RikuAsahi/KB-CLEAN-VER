@@ -1,34 +1,34 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" type="image/x-icon" href="../Assets/KBLOGOonly.ico"/>
+  <link rel="icon" type="image/x-icon" href="../../Assets/KBLOGOonly.ico"/>
   <title>Campaign – KAPITBISIG</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="Css/Campaign.css"/>
+  <link rel="stylesheet" href="../CSS/Campaigns.css"/>
 </head>
 <body>
 
 <!-- ════ NAV ════ -->
 <nav id="mainNav">
-  <a href="kapitbisig_updated.html" class="nav-logo">
+  <a href="Landingpage.html" class="nav-logo">
     <div class="nav-logo-img-wrap">
-      <img src="../Assets/KBLOGOonly.png" alt="KapitBisig" onerror="this.style.display='none';"/>
+      <img src="../../Assets/KBLOGOonly.png" alt="KapitBisig" onerror="this.style.display='none';"/>
     </div>
     <span class="nav-logo-text">KAPIT<span>BISIG</span></span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="kapitbisig_updated.html">Home</a></li>
-    <li><a href="kapitbisig_updated.html#campaigns">Campaigns</a></li>
-    <li><a href="kapitbisig_updated.html#organizations">Organizations</a></li>
-    <li><a href="kapitbisig_updated.html#FAQs">FAQs</a></li>
+    <li><a href="Landingpage.html">Home</a></li>
+    <li><a href="Landingpage.html#campaigns">Campaigns</a></li>
+    <li><a href="Landingpage.html#organizations">Organizations</a></li>
+    <li><a href="Landingpage.html#FAQs">FAQs</a></li>
     <!-- Auth state toggled by JS -->
     <li id="navAuthArea">
-      <a href="signin.html" class="nav-btn nav-signin">Sign In</a>
+      <a href="SignIn.html" class="nav-btn nav-signin">Sign In</a>
     </li>
     <li id="navSignupArea">
-      <a href="signup.html" class="nav-btn nav-signup">Sign Up</a>
+      <a href="Signup.html" class="nav-btn nav-signup">Sign Up</a>
     </li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -36,12 +36,12 @@
   </button>
 </nav>
 <div class="nav-drawer" id="navDrawer">
-  <a href="kapitbisig_updated.html">Home</a>
-  <a href="kapitbisig_updated.html#campaigns">Campaigns</a>
-  <a href="kapitbisig_updated.html#organizations">Organizations</a>
-  <a href="kapitbisig_updated.html#FAQs">FAQs</a>
-  <a href="signin.html" id="drawerSignIn">Sign In</a>
-  <a href="signup.html" id="drawerSignUp">Sign Up</a>
+  <a href="Landingpage.html">Home</a>
+  <a href="Landingpage.html#campaigns">Campaigns</a>
+  <a href="Landingpage.html#organizations">Organizations</a>
+  <a href="Landingpage.html#FAQs">FAQs</a>
+  <a href="SignIn.html" id="drawerSignIn">Sign In</a>
+  <a href="Signup.html" id="drawerSignUp">Sign Up</a>
 </div>
 
 <!-- ════ CAMPAIGN HERO ════ -->
@@ -231,7 +231,7 @@
     <div class="ngo-side-card reveal reveal-d1">
       <div class="ngo-side-header">
         <div class="ngo-side-logo">
-          <img src="../Assets/UpSkillsLOGO.png" alt="UpSkills+" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/>
+          <img src="../../Assets/UpSkillsLOGO.png" alt="UpSkills+" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"/>
           <svg style="display:none" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
         <div>
@@ -243,7 +243,7 @@
         </div>
       </div>
       <p class="ngo-side-desc">Empowering individuals through accessible education and skills development in Barangay 105, Tondo, Manila.</p>
-      <a href="kapitbisig_updated.html#organizations" class="ngo-side-link">View NGO Profile <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a href="Landingpage.html#organizations" class="ngo-side-link">View NGO Profile <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></a>
     </div>
 
   </aside>
@@ -261,7 +261,7 @@
     <h2 class="login-notice-title">Sign In to Donate</h2>
     <p class="login-notice-sub">Please sign in or create an account to make a donation and track your impact on the community.</p>
     <div class="login-notice-btns">
-      <button class="btn-login-now" onclick="window.location.href='signin.html'">Sign In to Continue</button>
+      <button class="btn-login-now" onclick="window.location.href='SignIn.html'">Sign In to Continue</button>
       <button class="btn-login-cancel" onclick="closeLoginNotice()">Maybe Later</button>
     </div>
   </div>
@@ -480,7 +480,7 @@
         <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         Share This Campaign
       </button>
-      <button class="btn-success-campaigns" onclick="closeModal('successModal'); window.location.href='kapitbisig_updated.html#campaigns'">
+      <button class="btn-success-campaigns" onclick="closeModal('successModal'); window.location.href='Landingpage.html#campaigns'">
         <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
         Back to Campaigns
       </button>
@@ -566,7 +566,7 @@
       </div>
       <div class="modal-footer" style="justify-content:center; gap:12px;">
         <button class="btn-outline" onclick="closeModal('reportModal'); resetReport()">Return to Campaign</button>
-        <button class="btn-primary-modal" onclick="closeModal('reportModal'); resetReport(); window.location.href='kapitbisig_updated.html#campaigns'">
+        <button class="btn-primary-modal" onclick="closeModal('reportModal'); resetReport(); window.location.href='Landingpage.html#campaigns'">
           Go to Campaigns
         </button>
       </div>
@@ -620,7 +620,7 @@
     <div class="footer-brand">
       <div class="footer-logo">
         <div class="footer-logo-img-wrap">
-          <img src="../Assets/KBLOGOonly.png" alt="KapitBisig" onerror="this.style.display='none';"/>
+          <img src="../../Assets/KBLOGOonly.png" alt="KapitBisig" onerror="this.style.display='none';"/>
         </div>
         <span class="footer-logo-text">KAPIT<span>BISIG</span></span>
       </div>
@@ -686,15 +686,15 @@
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 Kapitbisig. Barangay 105, Tondo, Manila.</p>
     <ul class="footer-bottom-links">
-      <li><a href="admin-login.html">Admin Login</a></li>
-      <li><a href="privacy-policy.html">Privacy Policy</a></li>
-      <li><a href="terms-and-conditions.html">Terms of Use</a></li>
+      <li><a href="AdminLogIn.html">Admin Login</a></li>
+      <li><a href="Privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="Terms-and-Conditions.html">Terms of Use</a></li>
     </ul>
   </div>
 </footer>
 
-<script src="js/api.js"></script>
-<script src="js/Campaign.js"></script>
+<script src="../JS/api.js"></script>
+<script src="../JS/Campaigns.js"></script>
 
 <!-- ════════════════════════════════════════════════════
      COOKIE BANNER
@@ -726,7 +726,7 @@
         <p class="kb-banner-desc">
           KapitBisig uses essential, analytics, and marketing cookies to keep the platform running smoothly and help us understand how you use it.
           By clicking <strong style="color:rgba(255,255,255,0.78);">Accept</strong>, you agree to our cookie policy.
-          See our <a href="privacy-policy.html">Privacy Policy</a> for full details.
+          See our <a href="Privacy-policy.html">Privacy Policy</a> for full details.
         </p>
       </div>
 
@@ -890,193 +890,7 @@
 </div>
 
 
-<!-- ════════════════════════════════════════════════════
-     COOKIE CONSENT SCRIPT
-════════════════════════════════════════════════════ -->
-<script>
-  /* ─────────────────────────────────────────
-     CONSTANTS & STATE
-  ───────────────────────────────────────── */
-  const STORAGE_KEY   = 'kb_cookie_consent';
-  const STORAGE_PREFS = 'kb_cookie_prefs';
-
-  let toastTimer = null;
-
-  /* ─────────────────────────────────────────
-     INIT — show banner on every load until explicit decision
-  ───────────────────────────────────────── */
-  (function init() {
-    const consent = localStorage.getItem(STORAGE_KEY);
-    // Show banner if no consent OR if user just dismissed (not made explicit decision)
-    if (!consent || consent === 'dismissed') {
-      showBanner();
-    } else {
-      loadPrefsIntoToggles();
-    }
-  })();
-
-  /* ─────────────────────────────────────────
-     BANNER VISIBILITY
-  ───────────────────────────────────────── */
-  function showBanner() {
-    const banner = document.getElementById('kb-cookie-banner');
-    banner.removeAttribute('hidden');
-    // Tiny delay lets layout settle before animating
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => { banner.classList.add('visible'); });
-    });
-  }
-
-  function hideBanner() {
-    const banner = document.getElementById('kb-cookie-banner');
-    banner.classList.add('hiding');
-    banner.addEventListener('transitionend', () => {
-      banner.classList.remove('visible', 'hiding');
-      banner.setAttribute('hidden', '');
-    }, { once: true });
-  }
-
-  function dismissBanner() {
-    // Don't save consent when user just closes - banner will show again next time
-    hideBanner();
-  }
-
-  /* ─────────────────────────────────────────
-     ACCEPT ALL (banner)
-  ───────────────────────────────────────── */
-  function acceptAll() {
-    saveConsent({ analytics: true, marketing: true }, 'all');
-    setToggles(true, true);
-    hideBanner();
-    showToast('All cookies accepted. Thank you! 🙏');
-  }
-
-  /* ─────────────────────────────────────────
-     PREFERENCES MODAL
-  ───────────────────────────────────────── */
-  function openPreferences() {
-    loadPrefsIntoToggles();
-    document.getElementById('kb-pref-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closePreferences() {
-    document.getElementById('kb-pref-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function handlePrefOverlayClick(e) {
-    if (e.target === document.getElementById('kb-pref-overlay')) closePreferences();
-  }
-
-  function savePreferences() {
-    const analytics = document.getElementById('toggle-analytics').checked;
-    const marketing = document.getElementById('toggle-marketing').checked;
-    saveConsent({ analytics, marketing }, 'custom');
-    closePreferences();
-    hideBanner();
-    showToast('Preferences saved successfully.');
-  }
-
-  function acceptAllFromPref() {
-    setToggles(true, true);
-    saveConsent({ analytics: true, marketing: true }, 'all');
-    closePreferences();
-    hideBanner();
-    showToast('All cookies accepted. Thank you! 🙏');
-  }
-
-  function rejectNonEssential() {
-    setToggles(false, false);
-    saveConsent({ analytics: false, marketing: false }, 'essential');
-    closePreferences();
-    hideBanner();
-    showToast('Non-essential cookies rejected.');
-  }
-
-  /* ─────────────────────────────────────────
-     PRIVACY / LEARN MORE MODAL
-  ───────────────────────────────────────── */
-  function openPrivacyModal() {
-    document.getElementById('kb-privacy-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closePrivacyModal() {
-    document.getElementById('kb-privacy-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function handlePrivacyOverlayClick(e) {
-    if (e.target === document.getElementById('kb-privacy-overlay')) closePrivacyModal();
-  }
-
-  /* ─────────────────────────────────────────
-     STORAGE HELPERS
-  ───────────────────────────────────────── */
-  function saveConsent(prefs, type) {
-    const payload = {
-      consentType: type,       // 'all' | 'custom' | 'essential' | 'dismissed'
-      essential:   true,       // always true
-      analytics:   prefs.analytics,
-      marketing:   prefs.marketing,
-      timestamp:   new Date().toISOString(),
-    };
-    localStorage.setItem(STORAGE_KEY,   type);
-    localStorage.setItem(STORAGE_PREFS, JSON.stringify(payload));
-    applyConsent(payload);
-  }
-
-  function loadPrefsIntoToggles() {
-    const raw = localStorage.getItem(STORAGE_PREFS);
-    if (!raw) return;
-    try {
-      const prefs = JSON.parse(raw);
-      document.getElementById('toggle-analytics').checked = !!prefs.analytics;
-      document.getElementById('toggle-marketing').checked = !!prefs.marketing;
-    } catch(e) {}
-  }
-
-  function setToggles(analytics, marketing) {
-    document.getElementById('toggle-analytics').checked = analytics;
-    document.getElementById('toggle-marketing').checked = marketing;
-  }
-
-  /**
-   * applyConsent – hook this into your analytics / tag manager.
-   * In production, conditionally load scripts here.
-   */
-  function applyConsent(prefs) {
-    console.log('[KapitBisig] Cookie consent applied:', prefs);
-    // Example:
-    // if (prefs.analytics) { loadGoogleAnalytics(); }
-    // if (prefs.marketing) { loadMetaPixel(); }
-  }
-
-  /* ─────────────────────────────────────────
-     TOAST
-  ───────────────────────────────────────── */
-  function showToast(msg) {
-    const toast = document.getElementById('kb-toast');
-    document.getElementById('kb-toast-msg').textContent = msg;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
-  }
-
-  /* ─────────────────────────────────────────
-     KEYBOARD: ESC closes open modals
-  ───────────────────────────────────────── */
-  document.addEventListener('keydown', e => {
-    if (e.key !== 'Escape') return;
-    closePreferences();
-    closePrivacyModal();
-    const comingSoonModal = document.querySelector('.coming-soon-modal');
-    if (comingSoonModal && comingSoonModal.classList.contains('open')) {
-      comingSoonModal.classList.remove('open');
-    }
-  });
-</script>
+<script src="../JS/Cookies.js"></script>
 
 <!-- Coming Soon Modal -->
 <div class="coming-soon-modal">
@@ -1088,6 +902,6 @@
   </div>
 </div>
 
-  <script src="js/FooterSocial.js"></script>
+  <script src="../JS/FooterSocial.js"></script>
 </body>
 </html>
