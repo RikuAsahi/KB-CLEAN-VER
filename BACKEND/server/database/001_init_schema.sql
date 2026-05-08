@@ -23,7 +23,8 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- USER (ERD: USER)
 CREATE TABLE users (
 	user_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-	full_name VARCHAR(150) NOT NULL,
+	first_name VARCHAR(150) NOT NULL,
+	last_name VARCHAR(150) NOT NULL,
 	email VARCHAR(190) NOT NULL,
 	password_hash VARCHAR(255) NULL,
 	role ENUM('donor', 'ngo_admin', 'admin', 'superadmin') NOT NULL DEFAULT 'donor',
