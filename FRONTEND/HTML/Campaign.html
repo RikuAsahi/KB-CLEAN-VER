@@ -44,6 +44,12 @@
   <a href="Signup.html" id="drawerSignUp">Sign Up</a>
 </div>
 
+<!-- Loading Spinner -->
+<div id="campaignLoader" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:9999;flex-direction:column;align-items:center;justify-content:center;">
+  <div style="color:white;font-size:18px;font-weight:600;">Loading campaign...</div>
+  <div style="color:white;font-size:14px;margin-top:12px;opacity:0.8;">Please wait a moment</div>
+</div>
+
 <!-- ════ CAMPAIGN HERO ════ -->
 <section class="camp-hero" id="campHero">
   <div class="camp-hero-inner">
@@ -694,6 +700,7 @@
 </footer>
 
 <script src="../JS/api.js"></script>
+<script src="../JS/helpers.js"></script>
 <script src="../JS/Campaigns.js"></script>
 
 <!-- ════════════════════════════════════════════════════

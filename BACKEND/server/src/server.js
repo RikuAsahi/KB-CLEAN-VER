@@ -1,29 +1,31 @@
-require('dotenv').config();
-
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const session = require('express-session');
-const bcrypt = require('bcryptjs');
-const {
-	initStore,
-	findByEmail,
-	findById,
-	createLocalUser
-} = require('./store/userStore');
+const config = require('./config');
+const userModel = require('./models/userModel');
+const campaignModel = require('./models/campaignModel');
+const donationModel = require('./models/donationModel');
+const ngoModel = require('./models/ngoModel');
+const activityLogModel = require('./models/activityLogModel');
+const errorHandler = require('./middleware/errorHandler');
+const { limiter, authLimiter, donationLimiter } = require('./middleware/rateLimiter');
+const authRoutes = require('./routes/authRoutes');
+const campaignRoutes = require('./routes/campaignRoutes');
+const donationRoutes = require('./routes/donationRoutes');
+const ngoRoutes = require('./routes/ngoRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
-const port = Number(process.env.PORT || 4000);
 
-const allowedOrigins = String(process.env.FRONTEND_ORIGINS || '')
-	.split(',')
-	.map((value) => value.trim())
-	.filter(Boolean);
+app.use(helmet());
+app.use(limiter);
 
 app.use(
 	cors({
 		origin(origin, callback) {
 			if (!origin) return callback(null, true);
-			if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+			if (config.frontendOrigins.length === 0 || config.frontendOrigins.includes(origin)) {
 				return callback(null, true);
 			}
 			return callback(new Error('Origin not allowed by CORS'));
@@ -36,135 +38,50 @@ app.use(express.json());
 app.use(
 	session({
 		name: 'kb.sid',
-		secret: process.env.SESSION_SECRET || 'dev-secret-change-me',
+		secret: config.sessionSecret,
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
 			httpOnly: true,
 			sameSite: 'lax',
-			secure: false,
+			secure: config.nodeEnv === 'production',
 			maxAge: 1000 * 60 * 60 * 24 * 7
 		}
 	})
 );
 
-function toPublicUser(user) {
-	return {
-		id: user.id,
-		firstName: user.firstName,
-		lastName: user.lastName,
-		fullName: user.fullName,
-		email: user.email,
-		role: user.role,
-		createdAt: user.createdAt
-	};
-}
-
 app.get('/health', (_req, res) => {
-	res.json({ ok: true, service: 'kapitbisig-auth' });
+	res.json({ ok: true, service: 'kapitbisig-api' });
 });
 
-app.post('/auth/signup', async (req, res) => {
-	const { firstName, lastName, email, password } = req.body || {};
+app.use('/auth', authLimiter, authRoutes);
+app.use('/campaigns', campaignRoutes);
+app.use('/donations', donationLimiter, donationRoutes);
+app.use('/ngos', ngoRoutes);
+app.use('/admin', adminRoutes);
 
-	if (!firstName || !lastName || !email || !password) {
-		return res.status(400).json({ message: 'Missing required fields.' });
-	}
-
-	if (String(password).length < 8) {
-		return res.status(400).json({ message: 'Password must be at least 8 characters.' });
-	}
-
-	try {
-		const existing = await findByEmail(String(email).trim());
-		if (existing) {
-			return res.status(409).json({ message: 'Email already registered.' });
-		}
-
-		const passwordHash = await bcrypt.hash(String(password), 10);
-		const user = await createLocalUser({
-			firstName: String(firstName).trim(),
-			lastName: String(lastName).trim(),
-			email: String(email).trim(),
-			passwordHash
-		});
-
-		req.session.userId = user.id;
-		return res.status(201).json({ message: 'Account created.', user: toPublicUser(user) });
-	} catch (error) {
-		if (error && error.code === 'ER_DUP_ENTRY') {
-			return res.status(409).json({ message: 'Email already registered.' });
-		}
-		return res.status(500).json({ message: 'Unable to create account right now.' });
-	}
+app.use((req, res) => {
+	res.status(404).json({ message: 'Not found' });
 });
 
-app.post('/auth/signin', async (req, res) => {
-	const { email, password } = req.body || {};
-
-	if (!email || !password) {
-		return res.status(400).json({ message: 'Email and password are required.' });
-	}
-
-	try {
-		const user = await findByEmail(String(email).trim());
-		if (!user || !user.passwordHash) {
-			return res.status(401).json({ message: 'Invalid credentials.' });
-		}
-
-		const match = await bcrypt.compare(String(password), user.passwordHash);
-		if (!match) {
-			return res.status(401).json({ message: 'Invalid credentials.' });
-		}
-
-		req.session.userId = user.id;
-		return res.json({ message: 'Signed in.', user: toPublicUser(user) });
-	} catch (_error) {
-		return res.status(500).json({ message: 'Unable to sign in right now.' });
-	}
-});
-
-app.get('/auth/me', async (req, res) => {
-	try {
-		if (!req.session.userId) {
-			return res.status(401).json({ message: 'Not authenticated.' });
-		}
-
-		const user = await findById(req.session.userId);
-		if (!user) {
-			req.session.destroy(() => {});
-			return res.status(401).json({ message: 'Not authenticated.' });
-		}
-
-		return res.json({ user: toPublicUser(user) });
-	} catch (_error) {
-		return res.status(500).json({ message: 'Unable to fetch session user.' });
-	}
-});
-
-app.post('/auth/logout', (req, res) => {
-	req.session.destroy(() => {
-		res.clearCookie('kb.sid');
-		res.json({ message: 'Signed out.' });
-	});
-});
-
-app.get('/auth/google', (_req, res) => {
-	res.status(501).json({ message: 'Google OAuth is not configured yet.' });
-});
-
-app.get('/auth/facebook', (_req, res) => {
-	res.status(501).json({ message: 'Facebook OAuth is not configured yet.' });
-});
+app.use(errorHandler);
 
 async function start() {
-	await initStore();
-	app.listen(port, () => {
-		console.log(`Auth server running on http://localhost:${port}`);
-	});
+	try {
+		await userModel.createUsersTable();
+		await ngoModel.createNgoProfilesTable();
+		await campaignModel.createCampaignsTable();
+		await donationModel.createDonationsTable();
+		await activityLogModel.createActivityLogsTable();
+
+		app.listen(config.port, () => {
+			console.log(`✓ KapitBisig API server running on http://localhost:${config.port}`);
+			console.log(`  Environment: ${config.nodeEnv}`);
+		});
+	} catch (error) {
+		console.error('✗ Failed to start server:', error);
+		process.exit(1);
+	}
 }
 
-start().catch((error) => {
-	console.error('Failed to start auth server:', error);
-	process.exit(1);
-});
+start();
