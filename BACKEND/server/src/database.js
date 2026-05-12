@@ -6,11 +6,11 @@ let pool;
 async function getPool() {
 	if (!pool) {
 		pool = mysql.createPool({
-			host: config.dbHost,
-			port: config.dbPort,
-			user: config.dbUser,
-			password: config.dbPassword,
-			database: config.dbName,
+			host: config.database.host,
+			port: config.database.port,
+			user: config.database.user,
+			password: config.database.password,
+			database: config.database.database,
 			waitForConnections: true,
 			connectionLimit: 10,
 			queueLimit: 0

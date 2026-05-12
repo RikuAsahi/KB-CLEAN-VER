@@ -21,15 +21,11 @@ async function getPool() {
 function mapUser(row) {
 	if (!row) return null;
 
-	const nameParts = String(row.full_name || '').trim().split(/\s+/).filter(Boolean);
-	const firstName = nameParts[0] || '';
-	const lastName = nameParts.slice(1).join(' ');
-
 	return {
 		id: String(row.user_id),
-		firstName,
-		lastName,
-		fullName: row.full_name,
+		firstName: row.first_name || '',
+		lastName: row.last_name || '',
+		fullName: `${row.first_name || ''} ${row.last_name || ''}`.trim(),
 		email: row.email,
 		passwordHash: row.password_hash,
 		role: row.role,
@@ -38,25 +34,13 @@ function mapUser(row) {
 }
 
 async function initStore() {
-	const db = await getPool();
-	await db.query(`
-		CREATE TABLE IF NOT EXISTS users (
-			user_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-			full_name VARCHAR(150) NOT NULL,
-			email VARCHAR(190) NOT NULL,
-			password_hash VARCHAR(255) NULL,
-			role ENUM('donor', 'ngo_admin', 'admin', 'superadmin') NOT NULL DEFAULT 'donor',
-			date_registered DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-			PRIMARY KEY (user_id),
-			UNIQUE KEY uq_users_email (email)
-		) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-	`);
+	// Schema created via SQL migrations in database/001_init_schema.sql
 }
 
 async function findByEmail(email) {
 	const db = await getPool();
 	const [rows] = await db.query(
-		`SELECT user_id, full_name, email, password_hash, role, date_registered
+		`SELECT user_id, first_name, last_name, email, password_hash, role, date_registered
 		 FROM users
 		 WHERE LOWER(email) = LOWER(?)
 		 LIMIT 1`,
@@ -68,7 +52,7 @@ async function findByEmail(email) {
 async function findById(id) {
 	const db = await getPool();
 	const [rows] = await db.query(
-		`SELECT user_id, full_name, email, password_hash, role, date_registered
+		`SELECT user_id, first_name, last_name, email, password_hash, role, date_registered
 		 FROM users
 		 WHERE user_id = ?
 		 LIMIT 1`,
@@ -79,12 +63,11 @@ async function findById(id) {
 
 async function createLocalUser({ firstName, lastName, email, passwordHash }) {
 	const db = await getPool();
-	const fullName = `${String(firstName || '').trim()} ${String(lastName || '').trim()}`.trim();
 
 	const [result] = await db.query(
-		`INSERT INTO users (full_name, email, password_hash, role)
-		 VALUES (?, ?, ?, 'donor')`,
-		[fullName, String(email || '').toLowerCase(), passwordHash]
+		`INSERT INTO users (first_name, last_name, email, password_hash, role)
+		 VALUES (?, ?, ?, ?, 'donor')`,
+		[String(firstName || '').trim(), String(lastName || '').trim(), String(email || '').toLowerCase(), passwordHash]
 	);
 
 	return findById(result.insertId);
