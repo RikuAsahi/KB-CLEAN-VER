@@ -23,13 +23,7 @@ app.use(limiter);
 
 app.use(
 	cors({
-		origin(origin, callback) {
-			if (!origin) return callback(null, true);
-			if (config.frontendOrigins.length === 0 || config.frontendOrigins.includes(origin)) {
-				return callback(null, true);
-			}
-			return callback(new Error('Origin not allowed by CORS'));
-		},
+		origin: true,
 		credentials: true
 	})
 );

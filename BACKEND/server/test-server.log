@@ -1,0 +1,3 @@
+✅ Test server running on http://localhost:4001
+[TEST] Received signup request
+[DEBUG] userModel.findByEmail called with: testapi@example.com

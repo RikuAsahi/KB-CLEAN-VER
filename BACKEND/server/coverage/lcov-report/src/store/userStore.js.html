@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.69% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/23</span>
+                <span class='fraction'>0/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/24</span>
+                <span class='fraction'>0/28</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/22</span>
+                <span class='fraction'>0/16</span>
             </div>
         
             
@@ -144,24 +144,7 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,24 +168,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,7 +209,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,13 +219,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const mysql = require('mysql2/promise');
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const mysql = <span class="cstat-no" title="statement not covered" >require('mysql2/promise');</span>
 &nbsp;
 let pool;
 &nbsp;
@@ -282,15 +248,11 @@ async function <span class="fstat-no" title="function not covered" >getPool(</sp
 function <span class="fstat-no" title="function not covered" >mapUser(</span>row) {
 <span class="cstat-no" title="statement not covered" >	if (!row) <span class="cstat-no" title="statement not covered" >return null;</span></span>
 &nbsp;
-	const nameParts = <span class="cstat-no" title="statement not covered" >String(row.full_name || '').trim().split(/\s+/).filter(Boolean);</span>
-	const firstName = <span class="cstat-no" title="statement not covered" >nameParts[0] || '';</span>
-	const lastName = <span class="cstat-no" title="statement not covered" >nameParts.slice(1).join(' ');</span>
-&nbsp;
 <span class="cstat-no" title="statement not covered" >	return {</span>
 		id: String(row.user_id),
-		firstName,
-		lastName,
-		fullName: row.full_name,
+		firstName: row.first_name || '',
+		lastName: row.last_name || '',
+		fullName: `${row.first_name || ''} ${row.last_name || ''}`.trim(),
 		email: row.email,
 		passwordHash: row.password_hash,
 		role: row.role,
@@ -299,25 +261,13 @@ function <span class="fstat-no" title="function not covered" >mapUser(</span>row
 }
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >initStore(</span>) {
-	const db = <span class="cstat-no" title="statement not covered" >await getPool();</span>
-<span class="cstat-no" title="statement not covered" >	await db.query(`</span>
-		CREATE TABLE IF NOT EXISTS users (
-			user_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-			full_name VARCHAR(150) NOT NULL,
-			email VARCHAR(190) NOT NULL,
-			password_hash VARCHAR(255) NULL,
-			role ENUM('donor', 'ngo_admin', 'admin', 'superadmin') NOT NULL DEFAULT 'donor',
-			date_registered DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-			PRIMARY KEY (user_id),
-			UNIQUE KEY uq_users_email (email)
-		) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-	`);
+	// Schema created via SQL migrations in database/001_init_schema.sql
 }
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >findByEmail(</span>email) {
 	const db = <span class="cstat-no" title="statement not covered" >await getPool();</span>
 	const [rows] = <span class="cstat-no" title="statement not covered" >await db.query(</span>
-		`SELECT user_id, full_name, email, password_hash, role, date_registered
+		`SELECT user_id, first_name, last_name, email, password_hash, role, date_registered
 		 FROM users
 		 WHERE LOWER(email) = LOWER(?)
 		 LIMIT 1`,
@@ -329,7 +279,7 @@ async function <span class="fstat-no" title="function not covered" >findByEmail(
 async function <span class="fstat-no" title="function not covered" >findById(</span>id) {
 	const db = <span class="cstat-no" title="statement not covered" >await getPool();</span>
 	const [rows] = <span class="cstat-no" title="statement not covered" >await db.query(</span>
-		`SELECT user_id, full_name, email, password_hash, role, date_registered
+		`SELECT user_id, first_name, last_name, email, password_hash, role, date_registered
 		 FROM users
 		 WHERE user_id = ?
 		 LIMIT 1`,
@@ -340,18 +290,17 @@ async function <span class="fstat-no" title="function not covered" >findById(</s
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >createLocalUser(</span>{ firstName, lastName, email, passwordHash }) {
 	const db = <span class="cstat-no" title="statement not covered" >await getPool();</span>
-	const fullName = <span class="cstat-no" title="statement not covered" >`${String(firstName || '').trim()} ${String(lastName || '').trim()}`.trim();</span>
 &nbsp;
 	const [result] = <span class="cstat-no" title="statement not covered" >await db.query(</span>
-		`INSERT INTO users (full_name, email, password_hash, role)
-		 VALUES (?, ?, ?, 'donor')`,
-		[fullName, String(email || '').toLowerCase(), passwordHash]
+		`INSERT INTO users (first_name, last_name, email, password_hash, role)
+		 VALUES (?, ?, ?, ?, 'donor')`,
+		[String(firstName || '').trim(), String(lastName || '').trim(), String(email || '').toLowerCase(), passwordHash]
 	);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >	return findById(result.insertId);</span>
 }
 &nbsp;
-module.exports = {
+<span class="cstat-no" title="statement not covered" >module.exports = {</span>
 	initStore,
 	findByEmail,
 	findById,
@@ -364,7 +313,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-09T15:43:50.787Z
+                at 2026-05-12T04:10:26.177Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

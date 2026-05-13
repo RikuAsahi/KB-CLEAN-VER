@@ -21,6 +21,7 @@ async function createUsersTable() {
 
 
 async function findByEmail(email) {
+	console.log('[DEBUG] userModel.findByEmail called with:', email);
 	const [rows] = await db.query(
 		`SELECT user_id, first_name, last_name, email, password_hash, role, date_registered
 		 FROM users

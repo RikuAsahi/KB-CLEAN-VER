@@ -1,0 +1,9 @@
+
+> kapitbisig-auth-server@1.0.0 start
+> node src/server.js
+
+✓ KapitBisig API server running on http://localhost:4000
+  Environment: development
+[DEBUG] userModel.findByEmail called with: test@example.com
+[DEBUG] userModel.findByEmail called with: jdc@gmail.com
+[DEBUG] userModel.findByEmail called with: jdc@gmail.com
