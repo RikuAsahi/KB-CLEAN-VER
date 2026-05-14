@@ -2,28 +2,56 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
+const PORT = Number(process.env.FRONTEND_PORT || 5500);
+const ROOT_DIR = __dirname;
+
+const contentTypes = {
+	'.html': 'text/html; charset=utf-8',
+	'.css': 'text/css; charset=utf-8',
+	'.js': 'application/javascript; charset=utf-8',
+	'.json': 'application/json; charset=utf-8',
+	'.png': 'image/png',
+	'.jpg': 'image/jpeg',
+	'.jpeg': 'image/jpeg',
+	'.ico': 'image/x-icon',
+	'.svg': 'image/svg+xml'
+};
+
+function resolveRequestPath(urlPath) {
+	const decodedPath = decodeURIComponent(urlPath.split('?')[0]);
+	const safePath = decodedPath === '/' ? '/HTML/Landingpage.html' : decodedPath;
+	const filePath = path.normalize(path.join(ROOT_DIR, safePath));
+
+	if (!filePath.startsWith(ROOT_DIR)) {
+		return null;
+	}
+
+	return filePath;
+}
+
 const server = http.createServer((req, res) => {
-  let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
-  
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      res.writeHead(404, { 'Content-Type': 'text/html' });
-      res.end('<h1>404 Not Found</h1>');
-      return;
-    }
-    
-    const ext = path.extname(filePath);
-    let contentType = 'text/html';
-    if (ext === '.css') contentType = 'text/css';
-    else if (ext === '.js') contentType = 'application/javascript';
-    else if (ext === '.png') contentType = 'image/png';
-    else if (ext === '.jpg' || ext === '.jpeg') contentType = 'image/jpeg';
-    
-    res.writeHead(200, { 'Content-Type': contentType });
-    res.end(content);
-  });
+	const filePath = resolveRequestPath(req.url || '/');
+
+	if (!filePath) {
+		res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+		res.end('Forbidden');
+		return;
+	}
+
+	fs.readFile(filePath, (err, content) => {
+		if (err) {
+			res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+			res.end('<h1>404 Not Found</h1>');
+			return;
+		}
+
+		const ext = path.extname(filePath).toLowerCase();
+		res.writeHead(200, { 'Content-Type': contentTypes[ext] || 'application/octet-stream' });
+		res.end(content);
+	});
 });
 
-server.listen(5500, () => {
-  console.log('✅ Frontend server running on http://localhost:5500');
+server.listen(PORT, () => {
+	console.log(`Frontend server running on http://localhost:${PORT}`);
+	console.log('Backend API should be running on http://localhost:4000');
 });
