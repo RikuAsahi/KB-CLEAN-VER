@@ -19,7 +19,16 @@ const contentTypes = {
 
 function resolveRequestPath(urlPath) {
 	const decodedPath = decodeURIComponent(urlPath.split('?')[0]);
-	const safePath = decodedPath === '/' ? '/HTML/Landingpage.html' : decodedPath;
+	let safePath = decodedPath;
+
+	// Redirect root to landing page
+	if (decodedPath === '/') {
+		safePath = '/HTML/Landingpage.html';
+	} else if (decodedPath.startsWith('/') && decodedPath.endsWith('.html') && !decodedPath.slice(1).includes('/')) {
+		// Route .html files from root to HTML directory (e.g., /Campaign.html -> /HTML/Campaign.html)
+		safePath = `/HTML${decodedPath}`;
+	}
+
 	const filePath = path.normalize(path.join(ROOT_DIR, safePath));
 
 	if (!filePath.startsWith(ROOT_DIR)) {
